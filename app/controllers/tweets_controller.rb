@@ -10,11 +10,8 @@ class TweetsController < ApplicationController
 	end
 	
 	def create
-		@tweet = Tweet.new(params[:id])
-		if @tweet.save
-			redirect_to tweets_path
-		else
-			render action: 'new'
-		end
-	end
+		@tweet = Tweet.new(params[:tweet])
+		@tweet.save
+        render json: { tweet: @tweet }
+    end
 end

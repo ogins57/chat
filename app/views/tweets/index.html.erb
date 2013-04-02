@@ -3,12 +3,12 @@
 
 <ul>
   <% @tweets.each do |tweet| %>
-  <li><%= tweet.tweet %>（by <%= tweet.user %>） </li>
+  <li id="tweet_<%= tweet.id %>"><%= tweet.tweet %>（by <%= tweet.user %>） </li>
   <% end %>
 </ul>
 
 <h2>tweet</h2>
-<%= form_for(@tweet) do |f| %>
+<%= form_for @tweet, :remote => true, :html =>{:id =>"comment_form_#{tweet.id}"} do |f| %>
 
 <div class="field">
   <%= f.label :user %>
@@ -25,3 +25,13 @@
 </div>
 
 <% end %>
+
+<script>
+$(function(){
+
+  $('#comment_form_<%= tweet.id %>').on('ajax:success', function(e, data, status, xhr) {
+    $('#tweet_'+data.tweet.id).fadeIn("slow");
+  });
+
+});
+</script>
