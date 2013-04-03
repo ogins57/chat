@@ -1,14 +1,11 @@
-<h2>set your name</h2>
+#encoding:utf-8
+<br><br>
+<h2>チャットで利用するお名前を指定してね</h2>
 
 <%= form_for(@user) do |f| %>
 
-<div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
-
+<%= f.label 'お名前' %>
+<%= f.text_field :name %>
+<%= f.submit %>
+<br><br>
 <% end %>

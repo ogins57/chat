@@ -1,0 +1,18 @@
+#encoding:utf-8
+<h2>つぶやきをねつ造します。</h2>
+
+<%= form_for @tweet do |f| %>
+
+<div class="field">
+  <%= f.hidden_field :user %>
+</div>
+
+<div class="field">
+  <%= f.text_area :tweet, :rows =>5 %>
+</div>
+
+<div class="actions">
+  <%= f.submit 'ねつ造する' %>
+  <%= f.submit '戻る', :action =>"index" %>
+</div>
+<% end %>

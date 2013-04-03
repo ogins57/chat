@@ -1,36 +1,42 @@
 #encoding:utf-8
-<h2>chat</h2>
+<br><br>
+<%= form_for @new_tweet do |f| %>
 
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li id="tweet_<%= tweet.id %>"><%= tweet.tweet %>（by <%= tweet.user %>） </li>
-  <% end %>
-</ul>
-
-<h2>tweet</h2>
-<%= form_for @tweet, :remote => true, :html =>{:id =>"comment_form_#{tweet.id}"} do |f| %>
-
-<div class="field">
-  <%= f.label :user %>
-  <%= f.text_field :user %>
-</div>
-
-<div class="field">
-  <%= f.label :tweet %>
-  <%= f.text_area :tweet, :rows =>5 %>
-</div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
-
+<table style="margin-left: auto;margin-right: auto;">
+<tr>
+    <td><%= f.hidden_field :user %></td>
+    <td><%= f.text_area :tweet, :rows =>3 %></td>
+    <td><%= f.submit 'つぶやく' %></td>
+</tr>
+</table>
 <% end %>
+<br><br>
+
+<div class="display">
+<table id="tweet_table">
+  <% @tweets.each do |tweet| %>
+  <tr id="tweet_<%= tweet.id %>">
+    <td>
+      <div class="user"><%= tweet.user %></div><br>
+      <div class="tweet"><%= tweet.tweet %></div><br>
+      <div class="tweet_action">
+        <%= link_to '削除する', tweet, :method => :delete, :remote => true%>
+        <%= link_to 'ねつ造する', edit_tweet_path(tweet) %>
+        投稿日：<%= tweet.created_at %>
+      </div>
+    </td>
+    <tr id="delimiter"><td>&nbsp;</td></tr>
+  </tr>
+  <% end %>
+</table>
+</div>
+
 
 <script>
 $(function(){
 
-  $('#comment_form_<%= tweet.id %>').on('ajax:success', function(e, data, status, xhr) {
-    $('#tweet_'+data.tweet.id).fadeIn("slow");
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
+    $('#tweet_'+data.tweet.id).fadeOut("slow");
   });
 
 });

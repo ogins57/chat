@@ -1,3 +1,40 @@
 // Place all the styles related to the Tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.display{
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.user{
+    color: blue;
+    font-size: large;
+    font-weight: bold;
+}
+
+.tweet{
+}
+
+.tweet_action{
+    font-size: x-small;
+    word-spacing: 5px;
+}
+
+#delimiter{
+    border: 2px solid;
+}
+
+#tweet_table{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tweet_table tr td {
+    text-align: left;
+}
+
+#tweet_table tr:nth-child(odd) td {
+    background-color: #fdfff3; 
+}

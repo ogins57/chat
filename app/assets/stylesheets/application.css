@@ -11,3 +11,36 @@
  *= require_self
  *= require_tree .
 */
+
+.header{
+    height: 80px;
+    margin: 2px;
+    padding: 2px;
+    background-color: #ECFFFB;
+    border-radius: 10px;
+}
+
+.chat_title{
+    font-family: Impact;
+    font-size: x-large;
+    color: blue;
+}
+
+.chat_link{
+    font-size: small;
+    text-align: right;
+    word-spacing: 5px;
+}
+
+.main{
+    margin:1em auto;
+    padding:0;
+    text-align:center;
+    border-radius: 10px;
+    background-color: #FBFFFE;
+}
+
+h2{
+    font-family: Impact;
+    color: blue;
+}
