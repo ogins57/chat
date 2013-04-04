@@ -10,7 +10,12 @@
 </tr>
 </table>
 <% end %>
-<br><br>
+
+<br>
+<hr width="45%">
+<br>
+<br>
+
 
 <div class="display">
 <table id="tweet_table">
@@ -25,7 +30,7 @@
         投稿日：<%= tweet.created_at %>
       </div>
     </td>
-    <tr id="delimiter"><td>&nbsp;</td></tr>
+    <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
   </tr>
   <% end %>
 </table>
@@ -37,6 +42,7 @@ $(function(){
 
   $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
     $('#tweet_'+data.tweet.id).fadeOut("slow");
+    $('#delimiter_'+data.tweet.id).fadeOut("slow");
   });
 
 });
