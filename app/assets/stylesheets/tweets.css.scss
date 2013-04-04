@@ -4,7 +4,7 @@
 
 .display{
     height: 500px;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 .user{
@@ -36,5 +36,5 @@
 }
 
 #tweet_table tr:nth-child(odd) td {
-    background-color: #fdfff3; 
+    background-color: #FFDDC8; 
 }
