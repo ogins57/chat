@@ -13,11 +13,11 @@
 */
 
 .header{
-    height: 80px;
+    height: 70px;
     margin: 2px;
     padding: 2px;
     background-color: #C8FFF1;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .chat_title{
@@ -36,7 +36,7 @@
     margin:1em auto;
     padding:0;
     text-align:center;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #E3FFF9;
 }
 

@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .display{
-    height: 500px;
-    overflow: auto;
 }
 
 .user{
@@ -37,4 +35,5 @@
 
 #tweet_table tr:nth-child(odd) td {
     background-color: #FFDDC8; 
+    border-radius: 15px;
 }
