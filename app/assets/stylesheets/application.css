@@ -12,6 +12,12 @@
  *= require_tree .
 */
 
+pre{
+    over-flow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 .header{
     height: 70px;
     margin: 2px;
