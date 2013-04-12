@@ -1,5 +1,11 @@
 #encoding:utf-8
-<br><br>
+
+<br>
+<% if flash[:notice] %>
+    <div id="notice"><%= image_tag("warning.jpg") %><%= notice %></div>
+<% end %>
+<br>
+
 <%= form_for @new_tweet do |f| %>
 
 <table style="margin-left: auto;margin-right: auto;">
@@ -10,7 +16,12 @@
 </tr>
 </table>
 <% end %>
-<br><br>
+
+<br>
+<hr width="45%">
+<br>
+<br>
+
 
 <div class="display">
 <table id="tweet_table">
@@ -18,14 +29,14 @@
   <tr id="tweet_<%= tweet.id %>">
     <td>
       <div class="user"><%= tweet.user %></div><br>
-      <div class="tweet"><%= tweet.tweet %></div><br>
+      <div class="tweet"><pre><%= tweet.tweet %></pre></div><br>
       <div class="tweet_action">
-        <%= link_to '削除する', tweet, :method => :delete, :remote => true%>
+        <%= link_to '削除する', tweet, :method => :delete, :confirm => '本当に削除しますか？', :remote => true%>
         <%= link_to 'ねつ造する', edit_tweet_path(tweet) %>
         投稿日：<%= tweet.created_at %>
       </div>
     </td>
-    <tr id="delimiter"><td>&nbsp;</td></tr>
+    <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
   </tr>
   <% end %>
 </table>
@@ -35,8 +46,13 @@
 <script>
 $(function(){
 
+  setTimeout(function(){
+    $('#notice').fadeOut("slow");
+  }, 2500);
+
   $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
     $('#tweet_'+data.tweet.id).fadeOut("slow");
+    $('#delimiter_'+data.tweet.id).fadeOut("slow");
   });
 
 });

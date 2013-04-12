@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#notice{
+    color: coral;
+    font-size: large;
+    font-family: Impact;
+}
+
 .display{
 }
 
@@ -12,6 +18,7 @@
 }
 
 .tweet{
+    font-size: large;
 }
 
 .tweet_action{
@@ -19,8 +26,11 @@
     word-spacing: 5px;
 }
 
+
 #delimiter{
+/*
     border: 2px solid;
+*/
 }
 
 #tweet_table{
@@ -34,6 +44,8 @@
 }
 
 #tweet_table tr:nth-child(odd) td {
-    background-color: #EEFFE3; 
+/*
+    background-color: lavender;
     border-radius: 15px;
+*/
 }

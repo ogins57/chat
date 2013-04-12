@@ -35,7 +35,8 @@ class TweetsController < ApplicationController
     def update
         @tweet = Tweet.find(params[:id])
         if @tweet.update_attributes(params[:tweet])
-            redirect_to tweets_path, notice: 'ねつ造しました。'
+            redirect_to tweets_path, notice: '「' + @tweet.user +
+                '」さん のつぶやきがねつ造されました。'
             else
             render action: 'edit'
         end

@@ -12,16 +12,23 @@
  *= require_tree .
 */
 
+pre{
+    over-flow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 .header{
     height: 70px;
     margin: 2px;
     padding: 2px;
-    background-color: #E3F4FF;
+    background-color: whitesmoke;
     border-radius: 15px;
 }
 
 .chat_title{
-    font-family: Impact;
+    font-family: arial black;
+    font-style: italic;
     font-size: xx-large;
     color: lightblue;
 }
@@ -37,7 +44,6 @@
     padding:0;
     text-align:center;
     border-radius: 20px;
-
 }
 
 h2{
