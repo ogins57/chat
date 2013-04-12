@@ -31,9 +31,21 @@
       <div class="user"><%= tweet.user %></div><br>
       <div class="tweet"><pre><%= tweet.tweet %></pre></div><br>
       <div class="tweet_action">
+        <%= link_to 'コメント', 'javascript:void(0)', :onclick => 'comment_display(5)' %>
         <%= link_to '削除する', tweet, :method => :delete, :confirm => '本当に削除しますか？', :remote => true%>
         <%= link_to 'ねつ造する', edit_tweet_path(tweet) %>
         投稿日：<%= tweet.created_at %>
+      </div><br>
+      <div id="comment_<%= tweet.id %>" style="display:none">
+        <% if tweet.comments.any? %>
+          <% @tweet.comments.each do |comment| %>
+            <%= comment.body %>(by <%= comment.user %>)
+          <% end %>
+        <% end %>
+        <%= form_for([@new_tweet, @comment]) do |f| %>
+          <%= f.text_area :body, :rows =>3 %>
+          <%= f.submit 'コメント' %>
+        <% end %>
       </div>
     </td>
     <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
@@ -56,4 +68,8 @@ $(function(){
   });
 
 });
+
+function comment_display(id){
+    $('#comment_'+id).fadeIn("slow");
+}
 </script>
