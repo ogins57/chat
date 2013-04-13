@@ -38,9 +38,8 @@
       </div><br>
     </td>
   <tr>
-  <tr>
+  <tr id="comment_<%= tweet.id %>" style="display:none">
     <td>
-      <div id="comment_<%= tweet.id %>" style="display:none">
         <% if tweet.comments.any? %>
           <table id="comment_table">
           <% tweet.comments.each do |comment| %>
@@ -63,9 +62,7 @@
           <%= f.submit 'コメント' %>
         <% end %>
         </tr></td>
-        </table>
-      </div>
-      
+        </table>      
     </td>
   </tr>
   <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
@@ -83,6 +80,7 @@ $(function(){
 
   $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
     $('#tweet_'+data.tweet.id).fadeOut("slow");
+    $('#comment_'+data.tweet.id).fadeOut("slow");
     $('#delimiter_'+data.tweet.id).fadeOut("slow");
   });
 

@@ -7,7 +7,6 @@ class TweetsController < ApplicationController
         @new_tweet.user = session[:user].name
         @comment = Comment.new
         @comment.user = session[:user].name
-        #@comments = Tweet.find(params[:id]).comments.build
 	end
 
 	def new
