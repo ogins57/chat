@@ -40,11 +40,26 @@ pre{
 }
 
 .main{
+/*
+    margin-left: 2em;
+    padding: 1em;
+    witdh: 70%;
+*/
     margin:1em auto;
     padding:0;
     text-align:center;
     border-radius: 20px;
+
 }
+
+/*
+.side{
+    float: left;
+    padding: 1em 2em;
+    width: 25%;
+    height: .main.height;
+}
+*/
 
 h2{
     font-family: Impact;

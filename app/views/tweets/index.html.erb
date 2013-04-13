@@ -31,25 +31,43 @@
       <div class="user"><%= tweet.user %></div><br>
       <div class="tweet"><pre><%= tweet.tweet %></pre></div><br>
       <div class="tweet_action">
-        <%= link_to 'コメント', 'javascript:void(0)', :onclick => 'comment_display(5)' %>
+        <a href="javascript:void(0)" onclick="comment_display(<%= tweet.id %>)">コメント</a>
         <%= link_to '削除する', tweet, :method => :delete, :confirm => '本当に削除しますか？', :remote => true%>
         <%= link_to 'ねつ造する', edit_tweet_path(tweet) %>
         投稿日：<%= tweet.created_at %>
       </div><br>
+    </td>
+  <tr>
+  <tr>
+    <td>
       <div id="comment_<%= tweet.id %>" style="display:none">
         <% if tweet.comments.any? %>
-          <% @tweet.comments.each do |comment| %>
-            <%= comment.body %>(by <%= comment.user %>)
+          <table id="comment_table">
+          <% tweet.comments.each do |comment| %>
+            <tr>
+              <td>
+                <div class="user"><%= comment.user %></div><br>
+                <pre><%= comment.body %></pre>
+              </td>
+            </tr>
+            <tr><td><hr></td></tr>
           <% end %>
+          </table>
         <% end %>
-        <%= form_for([@new_tweet, @comment]) do |f| %>
+        <table id="comment_table">
+        <tr><td>
+        <%= form_for([tweet, @comment]) do |f| %>
+          <%= f.hidden_field :user %>
           <%= f.text_area :body, :rows =>3 %>
           <%= f.submit 'コメント' %>
         <% end %>
+        </tr></td>
+        </table>
       </div>
+      
     </td>
-    <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
   </tr>
+  <tr id="delimiter_<%= tweet.id %>"><td><hr></td></tr>
   <% end %>
 </table>
 </div>
@@ -70,6 +88,6 @@ $(function(){
 });
 
 function comment_display(id){
-    $('#comment_'+id).fadeIn("slow");
+    $('#comment_'+id).fadeIn(1000);
 }
 </script>
