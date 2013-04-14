@@ -38,6 +38,13 @@
       </div><br>
     </td>
   <tr>
+  <tr id="comment_summary_<%= tweet.id %>">
+    <% if tweet.comments.any? %>
+    <td><div class="comment_summary">
+      <a href="javascript:void(0)" onclick="comment_display(<%= tweet.id %>)">コメント<%= tweet.comments.length %>件</a>
+    </div></td>
+    <% end %>
+  </tr>
   <tr id="comment_<%= tweet.id %>" style="display:none">
     <td>
         <% if tweet.comments.any? %>
@@ -81,6 +88,7 @@ $(function(){
   $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
     $('#tweet_'+data.tweet.id).fadeOut("slow");
     $('#comment_'+data.tweet.id).fadeOut("slow");
+    $('#comment_summary_'+data.tweet.id).fadeOut("slow");
     $('#delimiter_'+data.tweet.id).fadeOut("slow");
   });
 
