@@ -1,6 +1,10 @@
 Chat::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # -- add ogi --
+  ::ActiveSupport::Deprecation.silenced = true
+
+    
   # Code is not reloaded between requests
   config.cache_classes = true
 
