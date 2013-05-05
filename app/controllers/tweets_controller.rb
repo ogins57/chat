@@ -4,9 +4,11 @@ class TweetsController < ApplicationController
 	def index
 		@tweets = Tweet.all(:order =>'created_at DESC')
         @new_tweet = Tweet.new
-        @new_tweet.user = session[:user].name
+        _user = session[:user]
+        _user_name = _user[:lastname] + ' ' + _user[:firstname]
+        @new_tweet.user = _user_name
         @comment = Comment.new
-        @comment.user = session[:user].name
+        @comment.user = _user_name
 	end
 
 	def new

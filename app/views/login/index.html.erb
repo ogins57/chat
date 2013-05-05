@@ -1,0 +1,25 @@
+#encoding:utf-8
+
+<br>
+<% if flash[:notice] %>
+  <div id="notice"><%= image_tag("warning.jpg") %><%= notice %></div>
+<% end %>
+<br>
+
+
+<%= form_for @login_user, :url =>{:action =>'login'} do |f| %>
+<table style="margin-left: auto;margin-right: auto;">
+<tr>
+    <th><%= f.label :mail, 'メールアドレス' %></th>
+    <td><%= f.text_field :mail %></td>
+</tr>
+<tr>
+    <th><%= f.label :password, 'パスワード' %></th>
+    <td><%= f.password_field :password %></td>
+</tr>
+</table>
+
+<%= f.hidden_field :lastname %>
+<%= f.hidden_field :firstname %>
+<%= f.submit 'ログイン' %>
+<% end %>

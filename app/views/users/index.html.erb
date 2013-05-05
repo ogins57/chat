@@ -1,11 +1,25 @@
 #encoding:utf-8
-<br><br>
-<h2>チャットで利用するお名前を指定してね</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
+<table style="margin-left: auto;margin-right: auto;">
+<tr>
+    <th><%= f.label :lastname %></th>
+    <td><%= f.text_field :lastname %></td>
+</tr>
+<tr>
+    <th><%= f.label :firstname %></th>
+    <td><%= f.text_field :firstname %></td>
+</tr>
+<tr>
+    <th><%= f.label :mail %></th>
+    <td><%= f.text_field :mail %></td>
+</tr>
+<tr>
+    <th><%= f.label :password %></th>
+    <td><%= f.password_field :password %></td>
+</tr>
+</table>
 
-<%= f.label 'お名前' %>
-<%= f.text_field :name %>
-<%= f.submit %>
-<br><br>
+<%= f.hidden_field :is_valid %>
+<%= f.submit '登録' %>
 <% end %>
